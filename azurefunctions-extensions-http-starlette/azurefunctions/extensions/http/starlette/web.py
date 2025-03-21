@@ -1,32 +1,24 @@
 #  Copyright (c) Microsoft Corporation. All rights reserved.
 #  Licensed under the MIT License.
 
+import logging
 from typing import Callable
 
 import uvicorn
-from azurefunctions.extensions.base import (
-    RequestSynchronizer,
-    RequestTrackerMeta,
-    ResponseLabels,
-    ResponseTrackerMeta,
-    WebApp,
-    WebServer,
-)
-
+from azurefunctions.extensions.base import (RequestSynchronizer,
+                                            RequestTrackerMeta, ResponseLabels,
+                                            ResponseTrackerMeta, WebApp,
+                                            WebServer)
+from pydantic import BaseModel
 from starlette.applications import Starlette
-
 from starlette.requests import Request as StarletteRequest
-from starlette.responses import Response as StarletteResponse
 from starlette.responses import FileResponse as StarletteFileResponse
 from starlette.responses import HTMLResponse as StarletteHTMLResponse
 from starlette.responses import JSONResponse as StarletteJSONResponse
 from starlette.responses import PlainTextResponse as StarlettePlainTextResponse
 from starlette.responses import RedirectResponse as StarletteRedirectResponse
+from starlette.responses import Response as StarletteResponse
 from starlette.responses import StreamingResponse as StarletteStreamingResponse
-
-from pydantic import BaseModel
-
-import logging
 
 
 class RequestSynchronizer(RequestSynchronizer):

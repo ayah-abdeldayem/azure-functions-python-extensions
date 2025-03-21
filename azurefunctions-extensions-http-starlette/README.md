@@ -32,7 +32,7 @@ The Azure Functions Extensions Http FastApi library for Python allows you to cre
 # processing continuous data streams, or handling IoT device data.
 
 import azure.functions as func
-from azurefunctions.extensions.mcp_server.starlette import Request, JSONResponse
+from azurefunctions.extensions.http.starlette import Request, JSONResponse
 
 app = func.FunctionApp(http_auth_level=func.AuthLevel.ANONYMOUS)
 

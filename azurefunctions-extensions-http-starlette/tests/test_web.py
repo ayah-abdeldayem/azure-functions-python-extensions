@@ -2,25 +2,18 @@ import asyncio
 import unittest
 from unittest.mock import MagicMock, patch
 
-from azurefunctions.extensions.base import (
-    RequestTrackerMeta,
-    ResponseLabels,
-    ResponseTrackerMeta,
-)
-from azurefunctions.extensions.mcp_server.starlette import (
-    RequestSynchronizer,
-    WebApp,
-    WebServer,
-)
+from azurefunctions.extensions.base import (RequestTrackerMeta, ResponseLabels,
+                                            ResponseTrackerMeta)
+from azurefunctions.extensions.http.starlette import (
+    RequestSynchronizer, WebApp, WebServer)
 from starlette.applications import Starlette
-
 from starlette.requests import Request as StarletteRequest
-from starlette.responses import Response as StarletteResponse
 from starlette.responses import FileResponse as StarletteFileResponse
 from starlette.responses import HTMLResponse as StarletteHTMLResponse
 from starlette.responses import JSONResponse as StarletteJSONResponse
 from starlette.responses import PlainTextResponse as StarlettePlainTextResponse
 from starlette.responses import RedirectResponse as StarletteRedirectResponse
+from starlette.responses import Response as StarletteResponse
 from starlette.responses import StreamingResponse as StarletteStreamingResponse
 
 
@@ -182,9 +175,9 @@ class TestRequestSynchronizer(unittest.TestCase):
 
 class TestExtensionClasses(unittest.TestCase):
     def test_request(self):
-        from azurefunctions.extensions.mcp_server.starlette.web import Request
+        from azurefunctions.extensions.http.starlette.web import Request
 
-        self.assertEqual(RequestTrackerMeta.get_request_type(), StarletteRequest)
+        self.assertEqual(RequestTrackerMeta.get_request_type(), Request)
         self.assertTrue(
             isinstance(RequestTrackerMeta.get_synchronizer(), RequestSynchronizer)
         )
