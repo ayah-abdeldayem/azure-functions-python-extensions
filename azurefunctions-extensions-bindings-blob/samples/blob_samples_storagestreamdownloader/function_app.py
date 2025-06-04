@@ -6,6 +6,7 @@
 
 import logging
 
+
 import azure.functions as func
 import azurefunctions.extensions.bindings.blob as blob
 
